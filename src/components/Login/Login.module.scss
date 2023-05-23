@@ -1,0 +1,22 @@
+@use "../../assets/styles/mixins";
+
+.loginForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.loginFormTitle {
+  margin: 0 auto 2rem auto;
+  line-height: 0.9;
+  font-weight: bolder;
+}
+
+.formWp {
+  @extend %form;
+  margin: auto;
+  width: 100%;
+  max-width: 500px;
+}
