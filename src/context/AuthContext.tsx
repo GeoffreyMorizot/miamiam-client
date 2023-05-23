@@ -1,8 +1,27 @@
-import { PropsWithChildren, createContext } from "react";
-import { User } from "../components/Login";
+import {
+  Dispatch,
+  PropsWithChildren,
+  SetStateAction,
+  createContext,
+  useState,
+} from "react";
+import { User } from "../components/Login/Login";
 
-export const AuthContext = createContext<User | null>(null);
+export type Auth = Pick<User, "email" | "role_id">;
+
+export interface AuthCtx {
+  user: Auth | null;
+  setUser: Dispatch<SetStateAction<Auth | null>>;
+}
+
+export const AuthContext = createContext<AuthCtx | null>(null);
 
 export function AuthProvider({ children }: PropsWithChildren) {
-  return <AuthContext.Provider value={null}>{children}</AuthContext.Provider>;
+  const [user, setUser] = useState<Auth | null>(null);
+
+  return (
+    <AuthContext.Provider value={{ user, setUser }}>
+      {children}
+    </AuthContext.Provider>
+  );
 }

@@ -1,44 +1,47 @@
-import { Outlet, useLocation } from "react-router-dom";
-import Login from "../components/Login";
-import { useMutation, useQuery } from "react-query";
+import { Link, Outlet } from "react-router-dom";
+import Login, { User } from "../components/Login/Login";
+import { useMutation, useQueries, useQuery } from "react-query";
+import styles from "./Layout.module.scss";
+import useAuth from "../hooks/useAuth";
+import useLogout from "../hooks/fetch/useLogout";
+import useMe from "../hooks/fetch/useMe";
 
-export default function Root() {
-  const route = useLocation();
+export default function Layout() {
+  const auth = useAuth();
+  const { logout: logoutFn } = useLogout();
+  const { me } = useMe();
 
-  const { mutate: logout } = useMutation("logout", {
-    onMutate: async () => {
-      console.log(localStorage.getItem("token"));
-      await fetch("http://localhost:3333/api/auth/logout", {
-        method: "DELETE",
-        headers: {
-          credentials: "include",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
-    },
+  const { mutate: logout } = useMutation(logoutFn, {
     onSuccess: () => {
       localStorage.removeItem("token");
+      auth?.setUser(null);
     },
   });
+  console.log("layout render");
 
   return (
-    <div>
-      <header>
-        <a href="/">MiaMia</a>
-        <nav>
-          <ul>
-            <li>
-              <a href={`/dashboard`}>Dashboard</a>
-            </li>
-          </ul>
+    <>
+      <header className={styles.header}>
+        <Link to="/">
+          Mia
+          <br />
+          Mia
+        </Link>
+        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+          <nav>
+            <ul>
+              <Link to="/dashboard">Dashboard</Link>
+              <Link to="/">Home</Link>
+            </ul>
+          </nav>
+          {auth?.user && <p>{auth.user.email}</p>}
           <button onClick={() => logout()}>Logout</button>
-        </nav>
+        </div>
       </header>
-      <main>
-        {route.pathname === "/" && <Login />}
+
+      <main className={styles.main}>
         <Outlet />
       </main>
-    </div>
+    </>
   );
 }
