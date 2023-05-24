@@ -5,19 +5,19 @@ import {
   createContext,
   useState,
 } from "react";
-import { User } from "../components/Login/Login";
+import { UserAuthResponse } from "../types/User";
 
-export type Auth = Pick<User, "email" | "role_id">;
+export type AuthedUser = UserAuthResponse;
 
 export interface AuthCtx {
-  user: Auth | null;
-  setUser: Dispatch<SetStateAction<Auth | null>>;
+  user: AuthedUser | null;
+  setUser: Dispatch<SetStateAction<AuthedUser | null>>;
 }
 
 export const AuthContext = createContext<AuthCtx | null>(null);
 
 export function AuthProvider({ children }: PropsWithChildren) {
-  const [user, setUser] = useState<Auth | null>(null);
+  const [user, setUser] = useState<AuthedUser | null>(null);
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>

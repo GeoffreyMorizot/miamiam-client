@@ -1,6 +1,6 @@
 @use "../../assets/styles/mixins";
 
-.loginForm {
+.authForm {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,7 +8,7 @@
   width: 100%;
 }
 
-.loginFormTitle {
+.authFormTitle {
   margin: 0 auto 2rem auto;
   line-height: 0.9;
   font-weight: bolder;

@@ -13,7 +13,7 @@ import {
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { AuthProvider } from "./context/AuthContext.tsx";
-import Login from "./components/Login/Login.tsx";
+import Login from "./components/auth/login/Login.tsx";
 import Layout from "./layouts/Layout.tsx";
 import Dashboard from "./pages/Dashboard/Dashboard.tsx";
 import PublicRoutes from "./components/shared/auth/PublicRoutes.tsx";
