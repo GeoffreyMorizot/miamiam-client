@@ -1,18 +1,19 @@
 import { InputHTMLAttributes, forwardRef } from "react";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
+  field: string;
   error?: string;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, ...props }, ref) => {
+  ({ label, field, name, ...props }, ref) => {
     return (
       <div className="form-group">
-        <label className="input__label" htmlFor="field">
+        <label className="input__label" htmlFor={field}>
           {label}
         </label>
-        <input className="input" ref={ref} {...props} />
+        <input className="input" name={field} id={field} ref={ref} {...props} />
       </div>
     );
   }

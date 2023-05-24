@@ -1,15 +1,12 @@
 import { Link, Outlet } from "react-router-dom";
-import Login, { User } from "../components/Login/Login";
-import { useMutation, useQueries, useQuery } from "react-query";
+import { useMutation } from "react-query";
 import styles from "./Layout.module.scss";
 import useAuth from "../hooks/useAuth";
 import useLogout from "../hooks/fetch/useLogout";
-import useMe from "../hooks/fetch/useMe";
 
 export default function Layout() {
   const auth = useAuth();
   const { logout: logoutFn } = useLogout();
-  const { me } = useMe();
 
   const { mutate: logout } = useMutation(logoutFn, {
     onSuccess: () => {
@@ -17,7 +14,6 @@ export default function Layout() {
       auth?.setUser(null);
     },
   });
-  console.log("layout render");
 
   return (
     <>

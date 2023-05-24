@@ -1,11 +1,12 @@
 import ky from "ky";
-import { User, UserInputDTO } from "../../components/Login/Login";
+import { UserInputDTO } from "../../components/auth/login/Login";
+import { UserAuthResponse } from "../../types/User";
 
 const useLogin = () => {
-  async function login(data: UserInputDTO): Promise<User> {
+  async function login(payload: UserInputDTO): Promise<UserAuthResponse> {
     return await ky
       .post("http://127.0.0.1:3333/api/auth/login", {
-        json: data,
+        json: payload,
       })
       .json();
   }
