@@ -1,6 +1,7 @@
+import { useMutation,UseMutationOptions } from "react-query";
 import ky from "ky";
+
 import { UserAuthResponse, UserRegisterDTO } from "../../types/User";
-import { UseMutationOptions, useMutation } from "react-query";
 
 const useRegister = () => {
   async function register(payload: UserRegisterDTO): Promise<UserAuthResponse> {

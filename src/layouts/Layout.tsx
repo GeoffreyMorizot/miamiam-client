@@ -1,8 +1,10 @@
-import { Link, Outlet } from "react-router-dom";
 import { useMutation } from "react-query";
-import styles from "./Layout.module.scss";
-import useAuth from "../hooks/useAuth";
+import { Link, Outlet } from "react-router-dom";
+
 import useLogout from "../hooks/fetch/useLogout";
+import useAuth from "../hooks/useAuth";
+
+import styles from "./Layout.module.scss";
 
 export default function Layout() {
   const auth = useAuth();

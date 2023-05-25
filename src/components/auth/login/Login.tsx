@@ -1,10 +1,11 @@
-import { Input } from "../../shared/inputs/Input";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation } from "react-query";
-import useAuth from "../../../hooks/useAuth";
-import useLogin from "../../../hooks/fetch/useLogin";
 import { Link, useNavigate } from "react-router-dom";
-import { User, UserAuthResponse, UserLoginDTO } from "../../../types/User";
+
+import useLogin from "../../../hooks/fetch/useLogin";
+import useAuth from "../../../hooks/useAuth";
+import { UserAuthResponse, UserLoginDTO } from "../../../types/User";
+import { Input } from "../../shared/inputs/Input";
 import { AuthFormWrapper } from "../AuthFormWrapper";
 
 //Composant Login

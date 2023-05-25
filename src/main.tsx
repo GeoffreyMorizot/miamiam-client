@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.scss";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import {
   BrowserRouter,
   createBrowserRouter,
@@ -10,15 +11,15 @@ import {
   Routes,
 } from "react-router-dom";
 
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
-import { AuthProvider } from "./context/AuthContext.tsx";
 import Login from "./components/auth/login/Login.tsx";
+import ProtectedRoutes from "./components/shared/auth/ProtectedRoutes.tsx";
+import PublicRoutes from "./components/shared/auth/PublicRoutes.tsx";
+import { AuthProvider } from "./context/AuthContext.tsx";
 import Layout from "./layouts/Layout.tsx";
 import Dashboard from "./pages/Dashboard/Dashboard.tsx";
-import PublicRoutes from "./components/shared/auth/PublicRoutes.tsx";
-import ProtectedRoutes from "./components/shared/auth/ProtectedRoutes.tsx";
 import App from "./App.tsx";
+
+import "./index.scss";
 
 /* const publicRoutes: RouteObject[] = [
   {

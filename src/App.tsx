@@ -1,14 +1,16 @@
-import { Routes, Route } from "react-router-dom";
-import "./App.css";
+import { useQuery } from "react-query";
+import { Route, Routes } from "react-router-dom";
+
 import Login from "./components/auth/login/Login";
+import Register from "./components/auth/register/Register";
+import ProtectedRoutes from "./components/shared/auth/ProtectedRoutes";
+import useMe from "./hooks/fetch/useMe";
+import useAuth from "./hooks/useAuth";
 import Layout from "./layouts/Layout";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import ProtectedRoutes from "./components/shared/auth/ProtectedRoutes";
-import useAuth from "./hooks/useAuth";
-import useMe from "./hooks/fetch/useMe";
-import { useQuery } from "react-query";
 import { UserAuthResponse } from "./types/User";
-import Register from "./components/auth/register/Register";
+
+import "./App.css";
 
 const ROLES = {
   User: 1,

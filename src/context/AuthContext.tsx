@@ -1,10 +1,11 @@
 import {
+  createContext,
   Dispatch,
   PropsWithChildren,
   SetStateAction,
-  createContext,
   useState,
 } from "react";
+
 import { UserAuthResponse } from "../types/User";
 
 export type AuthedUser = UserAuthResponse;

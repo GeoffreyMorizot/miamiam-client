@@ -1,11 +1,11 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Input, InputProps } from "../../shared/inputs/Input";
-import { UserRegisterDTO } from "../../../types/User";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+
 import { useRegisterQuery } from "../../../hooks/fetch/useRegister";
 import useAuth from "../../../hooks/useAuth";
-import { useNavigate } from "react-router";
-
-import { Link } from "react-router-dom";
+import { UserRegisterDTO } from "../../../types/User";
+import { Input, InputProps } from "../../shared/inputs/Input";
 import { AuthFormWrapper } from "../AuthFormWrapper";
 
 export default function Register() {

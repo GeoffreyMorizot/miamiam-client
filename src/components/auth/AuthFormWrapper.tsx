@@ -1,4 +1,5 @@
 import { PropsWithChildren } from "react";
+
 import styles from "./Auth.module.scss";
 
 interface AuthFormWrapperProps extends PropsWithChildren {
